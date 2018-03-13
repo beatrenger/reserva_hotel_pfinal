@@ -18,7 +18,7 @@
            <span> Mi Hotel</span>
          </div>
          <div class="col-md-6">
-           <span>#reservacion</span> <input type="text" class="form-control" id="reserv" value="0" disabled>
+           <span>#reservacion</span> <input type="text" class="form-control" id="reserv" value="1" disabled>
          </div>
          <div class="col-md-12">
            <span>Nombre</span> <input type="text" class="form-control" name="Agregar Nombre" value="">
@@ -64,7 +64,55 @@
       <input type="text" class="form-control" id="costo_cuarto2" name="" value="">
    </div>
  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary">Reservar</button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary">Consultar</button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary">Lista</button>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th># Reserveracion</th>
+        <th>Nombre</th>
+        <th>Tipo Cuarto</th>
+          <th>Fecha Entrada</th>
+          <th>Fecha Salida</th>
+          <th>Dias</th>
+          <th>Costo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Alan Renteria</td>
+        <td>Tipo 1</td>
+        <td>3/5/2012</td>
+        <td>3/5/2013</td>
+        <td>8</td>
+        <td>$12,000</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Alan Renteria2</td>
+        <td>Tipo 2</td>
+        <td>3/5/2012</td>
+        <td>3/5/2013</td>
+        <td>8</td>
+        <td>$12,000</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
    <script type="text/javascript">
    $(function () {
           $( ".datepicker" ).datepicker();

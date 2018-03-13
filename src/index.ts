@@ -1,21 +1,18 @@
-import {numeros} from './racional';
+import {fecha} from './fech';
+import {reserv} from './reservaciones';
 import  './styles.scss';
 import  $ from 'jquery';
 
+var res: reserv.Reservacion;
+var fech: fecha.Fecha;
+
 $(document).ready(function(e) {
-  var r,r1,r2,rr,resp: numeros.Racional;
 // suma
   $('#suma').on('click',function(){
-    procesa_suma();
+    agregar_reservacion()
   });
 
-        function procesa_suma(){
-          r = new numeros.Racional( $("#num1").val() ,$("#dem1").val());
-          r2 = new numeros.Racional($("#num2").val() ,$("#dem2").val());
-          resp = numeros.Racional.suma(r,r2);
-           var resps = resp.disp();
-           $("#respuesta").text(resps);
-
+        function agregar_reservacion(){
       }
 
 
