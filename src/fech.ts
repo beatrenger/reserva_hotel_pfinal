@@ -4,8 +4,8 @@ export namespace fecha{
     export  class Fecha extends Date{
       dia_sem:number;
       d: Date;
-      constructor();
-        constructor(a:number,m:number ,d:number, ){
+
+        constructor(a:number,m:number ,d:number ){
           super();
           this.d = new Date(a,m,d);
         }

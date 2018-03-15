@@ -25,54 +25,67 @@
          </div>
        </div>
      <div class="row">
-       <div class="col-md-1">
-         <span>Tipo 1</span>
-       </div>
-       <div class="col-md-1">
-         <input type="text" class="form-control" id="tipo1_cant" name="" value="">
-       </div>
-       <div class='col-md-2'>
-         <input type="text" class="form-control datepicker"  id="datepicker1">
-     </div>
-     <div class="col-md-2">
-       <input type="text" class="form-control datepicker"  id="datepicker2">
-     </div>
-     <div class="col-md-1">
-        <input type="text" id="dias"  class="form-control" name="" value="" disabled>
-     </div>
-     <div class="col-md-5">
-        <input type="text" class="form-control" id="costo_cuarto" name="" value="">
-     </div>
-   </div>
-   <div class="row">
-     <div class="col-md-1">
-       <span>Tipo 2</span>
-     </div>
-     <div class="col-md-1">
-       <input type="text" class="form-control" id="tipo2_cant" name="" value="">
-     </div>
-     <div class='col-md-2'>
-       <input type="text" class="form-control datepicker"  id="datepicker2_1">
-   </div>
-   <div class="col-md-2">
-     <input type="text" class="form-control datepicker"  id="datepicker2_2">
-   </div>
-   <div class="col-md-1">
-      <input type="text" id="dias2"  class="form-control" name="" value="" disabled>
-   </div>
-   <div class="col-md-5">
-      <input type="text" class="form-control" id="costo_cuarto2" name="" value="">
-   </div>
+
+       <table class="table">
+         <thead>
+           <tr>
+             <th>Tipo 1: $500</th>
+             <th>Tipo 2: $1000</th>
+               <th>Fecha Entrada</th>
+               <th>Fecha Salida</th>
+               <th>Dias</th>
+               <th>Costo</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td>
+               <div class="input-group spinner1">
+ <input type="text" class="form-control" value="0">
+ <div class="input-group-btn-vertical">
+   <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+   <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
  </div>
+</div>
+             </td>
+             <td>
+               <div class="input-group spinner2">
+ <input type="text" class="form-control" value="0">
+ <div class="input-group-btn-vertical">
+   <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+   <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+ </div>
+</div>
+                </td>
+             <td>     <input type="text" class="form-control datepicker"  id="datepicker1">
+             </td>
+             <td>   <input type="text" class="form-control datepicker"  id="datepicker2">
+             </td>
+             <td>    <input type="text" id="dias"  class="form-control" name="" value="" disabled>
+             </td>
+             <td>    <input type="text" class="form-control" id="costo_cuarto" name="" value="" disabled>
+             </td>
+            </tr>
+
+
+         </tbody>
+       </table>
+
+
+
+
+
+   </div>
+
   <div class="row">
     <div class="col-md-2">
-      <button type="button" class="btn btn-primary">Reservar</button>
+      <button type="button" id="reservar" class="btn btn-primary">Reservar</button>
     </div>
     <div class="col-md-2">
-      <button type="button" class="btn btn-primary">Consultar</button>
+      <button type="button" id="consultar" class="btn btn-primary">Consultar</button>
     </div>
     <div class="col-md-2">
-      <button type="button" class="btn btn-primary">Lista</button>
+      <button type="button" id="lista" class="btn btn-primary">Lista</button>
     </div>
   </div>
 </div>
@@ -83,39 +96,53 @@
       <tr>
         <th># Reserveracion</th>
         <th>Nombre</th>
-        <th>Tipo Cuarto</th>
+        <th>Tipo 1</th>
+        <th>Tipo 2</th>
           <th>Fecha Entrada</th>
           <th>Fecha Salida</th>
           <th>Dias</th>
           <th>Costo</th>
+          <th>Consultar</th>
+          <th>Eliminar</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>1</td>
         <td>Alan Renteria</td>
-        <td>Tipo 1</td>
+        <td>4</td>
+        <td>3 </td>
         <td>3/5/2012</td>
         <td>3/5/2013</td>
         <td>8</td>
         <td>$12,000</td>
+        <td><button type="button"  class="cons_ind btn btn-primary">Consultar</button>
+        </td>
+        <td> <button type="button"  class="eliminar btn btn-danger">Eliminar</button> </td>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>Alan Renteria2</td>
-        <td>Tipo 2</td>
-        <td>3/5/2012</td>
-        <td>3/5/2013</td>
-        <td>8</td>
-        <td>$12,000</td>
-      </tr>
+
 
     </tbody>
   </table>
 </div>
    <script type="text/javascript">
    $(function () {
-          $( ".datepicker" ).datepicker();
+
+     $( "#spinner" ).spinner();
+       $( ".datepicker" ).datepicker();
+
+       $('.spinner1 .btn:first-of-type').on('click', function() {
+  $('.spinner1 input').val( parseInt($('.spinner1 input').val(), 10) + 1);
+});
+$('.spinner1 .btn:last-of-type').on('click', function() {
+  $('.spinner1 input').val( parseInt($('.spinner1 input').val(), 10) - 1);
+});
+$('.spinner2 .btn:first-of-type').on('click', function() {
+  $('.spinner2 input').val( parseInt($('.spinner2 input').val(), 10) + 1);
+});
+$('.spinner2 .btn:last-of-type').on('click', function() {
+  $('.spinner2 input').val( parseInt($('.spinner2 input').val(), 10) - 1);
+});
       });
 
    </script>

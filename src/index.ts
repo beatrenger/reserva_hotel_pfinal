@@ -8,11 +8,24 @@ var fech: fecha.Fecha;
 
 $(document).ready(function(e) {
 // suma
-  $('#suma').on('click',function(){
-    agregar_reservacion()
+  $('#reservar').on('click',function(){
+    alert('reservar');
+  });
+  $('#consultar').on('click',function(){
+    alert('consultar');
+  });
+  $('#lista').on('click',function(){
+    alert('lista');
+  });
+  $('.eliminar').on('click',function(){
+    alert('eliminar');
+  });
+  $('.cons_ind').on('click',function(){
+    alert('consultar 2');
   });
 
         function agregar_reservacion(){
+
       }
 
 
