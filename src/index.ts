@@ -36,7 +36,7 @@ $(document).ready(function(e) {
   //   alert('lista');
   // });
   $('#tablecontent').on('click','.eliminar',function(){
-        console.log('works');
+      //  console.log('works');
   res = reserv.Reservacion.eliminar_index(res,parseInt($(this).attr('id')));
        // res.splice(parseInt($(this).attr('id')),1);
        imprimir();
@@ -68,27 +68,47 @@ $(document).ready(function(e) {
             var f_salida = str.split("/");
             fech = new fecha.Fecha( f_entrada[2] , f_entrada[0],  f_entrada[1]);
             fech2 = new fecha.Fecha( f_salida[2] , f_salida[0],  f_salida[1]);
-            lleno(fech,$('.spinner1 input').val(),$('.spinner2 input').val());
+            //lleno(fech,$('.spinner1 input').val(),$('.spinner2 input').val());
             var cant_dias =   fecha.Fecha.calc_date(fech,fech2);
 
             var costo_total =reserv.Reservacion.calcular_precio($('.spinner1 input').val(),$('.spinner2 input').val(),+cant_dias);
             array= [num,nombre,$('.spinner1 input').val(),$('.spinner2 input').val(),fech,fech2,cant_dias,costo_total];
-            res.push(array);
-            console.log(res);
+            //  if(lleno(fech,$('.spinner1 input').val(),$('.spinner2 input').val())){
+
+              //    alert('no hay espacio');
+              //}else{
+                  res.push(array);
+              //}
+      //      console.log(res);
             limpiar();
             imprimir();
         }
 
-          function lleno(fech:fecha.Fecha,tipo1:number,tipo2:number){
+          function lleno(fech:fecha.Fecha,tipo1:number,tipo2:number):boolean{
             var cant_cuarto1,cant_cuarto2:number;
             var diarenta, cuarto1,cuarto2:number;
+              diarenta = fecha.Fecha.tomardia(fech);
+              var  cuart1:number = tipo1;
+              var cuart2:number= tipo2;
+              var num11m,num22:number;
+              // console.log(res.length);
             for(var i = 0; i< res.length; i++){
               var la_fech1,la_fech2,d_c : fecha.Fecha;
               la_fech1 = res[i][4];
               la_fech2 = res[i][5];
-              diarenta = fecha.Fecha.tomardia(fech);
 
+              if(diarenta >= fecha.Fecha.tomardia(la_fech1) ){
+
+                  cuart1 = parseInt( cuart1 +res[i][2]) ;
+                  cuart2 = parseInt(cuart2 +  res[i][3]) ;
+                    }
               }
+              console.log(cuart1);
+            if(cuart1>=10 || cuart2>=10){
+              return true;
+            } else{
+             return false;
+            }
           }
           function limpiar(){
             $('.spinner1 input').val(0);
@@ -110,7 +130,7 @@ $(document).ready(function(e) {
                 la_fech2 = res[i][5];
                 d_c = res[i][6];
                  $('#table_reservaciones').append('<tr><td>' + res[i][0] + '</td> <td>' + res[i][1] + '</td><td>' + res[i][2] + '</td> <td>' + res[i][3] + '</td>'+
-                '<td>' + la_fech1.getdate()+ ' </td><td>'+ la_fech2.getdate()+' </td><td>'+  d_c+' </td><td>'+  res[i][6]+' </td><td><button type="button" id="'+ i +'" class="cons_ind btn btn-primary">Consultar</button></td><td><button type="button" id="'+ i +'"  class="eliminar btn btn-danger">Eliminar</button></td></tr>');
+                '<td>' + la_fech1.getdate()+ ' </td><td>'+ la_fech2.getdate()+' </td><td>'+  d_c+' </td><td>'+  res[i][7]+' </td><td><button type="button" id="'+ i +'" class="cons_ind btn btn-primary">Consultar</button></td><td><button type="button" id="'+ i +'"  class="eliminar btn btn-danger">Eliminar</button></td></tr>');
 
               }
           }
