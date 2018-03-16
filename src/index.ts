@@ -13,13 +13,32 @@ $(document).ready(function(e) {
   });
   $('#tablecontent').on('click','.cons_ind',function(){
 
-      alert(res[parseInt($(this).attr('id'))]);
+    //  alert(res[parseInt($(this).attr('id'))]);
+    var i = parseInt($(this).attr('id'));
+    var la_fech1,la_fech2,d_c : fecha.Fecha;
+    la_fech1 = res[i][4];
+    la_fech2 = res[i][5];
+      var cant_dias =   fecha.Fecha.calc_date(la_fech1,la_fech2);
+
+      $("#table_uno tbody >  tr").remove();
+    $('#contenido_solo').append('<tr><td>' + res[i][0] + '</td> <td>' + res[i][1] + '</td><td>' +la_fech1.getdate()+ '</td> <td>' + la_fech2.getdate() + '</td>'+
+   '<td>' + cant_dias+ ' </td><td>'+ parseInt(cant_dias)*1000 +' </td><td>'+  parseInt(cant_dias)*1500+' </td></tr>');
+
+    $('.blackbackground').css('display',"block");
+
+
+  });
+
+  $('.blackbackground').on('click',function(){
+        $(this).css('display','none');
   });
   // $('#lista').on('click',function(){
   //   alert('lista');
   // });
   $('#tablecontent').on('click','.eliminar',function(){
-       res.splice(parseInt($(this).attr('id')),1);
+        console.log('works');
+  res = reserv.Reservacion.eliminar_index(res,parseInt($(this).attr('id')));
+       // res.splice(parseInt($(this).attr('id')),1);
        imprimir();
   });
   $('.cons_ind').on('click',function(){
@@ -49,6 +68,7 @@ $(document).ready(function(e) {
             var f_salida = str.split("/");
             fech = new fecha.Fecha( f_entrada[2] , f_entrada[0],  f_entrada[1]);
             fech2 = new fecha.Fecha( f_salida[2] , f_salida[0],  f_salida[1]);
+            lleno(fech,$('.spinner1 input').val(),$('.spinner2 input').val());
             var cant_dias =   fecha.Fecha.calc_date(fech,fech2);
 
             var costo_total =reserv.Reservacion.calcular_precio($('.spinner1 input').val(),$('.spinner2 input').val(),+cant_dias);
@@ -59,7 +79,22 @@ $(document).ready(function(e) {
             imprimir();
         }
 
+          function lleno(fech:fecha.Fecha,tipo1:number,tipo2:number){
+            console.log("LOLOLOLOLOLOL");
 
+            console.log(fecha.Fecha.tomardia(fech));
+            var cant_cuarto1,cant_cuarto2:number;
+            var diarenta, cuarto1,cuarto2:number;
+            for(var i = 0; i< res.length; i++){
+              var la_fech1,la_fech2,d_c : fecha.Fecha;
+              la_fech1 = res[i][4];
+              la_fech2 = res[i][5];
+              diarenta = fecha.Fecha.tomardia(fech);
+                console.log(fecha.Fecha.tomardia(fech));
+                  console.log(fecha.Fecha.tomardia(fech));
+
+              }
+          }
           function limpiar(){
             $('.spinner1 input').val(0);
             $('.spinner2 input').val(0);

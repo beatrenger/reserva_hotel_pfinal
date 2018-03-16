@@ -27,6 +27,10 @@ export namespace fecha{
           return "no es posible";
           }
         }
+
+        static tomardia(date1:Fecha):number{
+          return  date1.d.valueOf()
+        }
       }
 
 }
