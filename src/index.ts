@@ -80,9 +80,6 @@ $(document).ready(function(e) {
         }
 
           function lleno(fech:fecha.Fecha,tipo1:number,tipo2:number){
-            console.log("LOLOLOLOLOLOL");
-
-            console.log(fecha.Fecha.tomardia(fech));
             var cant_cuarto1,cant_cuarto2:number;
             var diarenta, cuarto1,cuarto2:number;
             for(var i = 0; i< res.length; i++){
@@ -90,8 +87,6 @@ $(document).ready(function(e) {
               la_fech1 = res[i][4];
               la_fech2 = res[i][5];
               diarenta = fecha.Fecha.tomardia(fech);
-                console.log(fecha.Fecha.tomardia(fech));
-                  console.log(fecha.Fecha.tomardia(fech));
 
               }
           }
