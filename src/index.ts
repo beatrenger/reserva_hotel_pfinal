@@ -68,18 +68,18 @@ $(document).ready(function(e) {
             var f_salida = str.split("/");
             fech = new fecha.Fecha( f_entrada[2] , f_entrada[0],  f_entrada[1]);
             fech2 = new fecha.Fecha( f_salida[2] , f_salida[0],  f_salida[1]);
-            //lleno(fech,$('.spinner1 input').val(),$('.spinner2 input').val());
+            lleno(fech,$('.spinner1 input').val(),$('.spinner2 input').val());
             var cant_dias =   fecha.Fecha.calc_date(fech,fech2);
 
             var costo_total =reserv.Reservacion.calcular_precio($('.spinner1 input').val(),$('.spinner2 input').val(),+cant_dias);
             array= [num,nombre,$('.spinner1 input').val(),$('.spinner2 input').val(),fech,fech2,cant_dias,costo_total];
-            //  if(lleno(fech,$('.spinner1 input').val(),$('.spinner2 input').val())){
+             if(lleno(fech,$('.spinner1 input').val(),$('.spinner2 input').val())){
 
-              //    alert('no hay espacio');
-              //}else{
+                 alert('no hay espacio');
+              }else{
                   res.push(array);
-              //}
-      //      console.log(res);
+              }
+//console.log(res);
             limpiar();
             imprimir();
         }
@@ -96,14 +96,17 @@ $(document).ready(function(e) {
               var la_fech1,la_fech2,d_c : fecha.Fecha;
               la_fech1 = res[i][4];
               la_fech2 = res[i][5];
-
-              if(diarenta >= fecha.Fecha.tomardia(la_fech1) ){
-
-                  cuart1 = parseInt( cuart1 +res[i][2]) ;
-                  cuart2 = parseInt(cuart2 +  res[i][3]) ;
+              num11m = parseInt(res[i][2]);
+              num22 = parseInt(res[i][3]);
+              console.log(Number(cuart1) + 200);
+                 // console.log( parseInt(res[i][2])+  200);
+              if(diarenta >= fecha.Fecha.tomardia(la_fech1) && diarenta <= fecha.Fecha.tomardia(la_fech2) ){
+                     console.log(cuart1 + parseInt(res[i][2]));
+                cuart1=  Number(cuart1) + num11m ;
+                  cuart2 = Number(cuart2) + num22 ;
                     }
               }
-              console.log(cuart1);
+              console.log(cuart1 + ":Cuartos Rentados");
             if(cuart1>=10 || cuart2>=10){
               return true;
             } else{
